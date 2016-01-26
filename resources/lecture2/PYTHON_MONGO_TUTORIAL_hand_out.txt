@@ -1,0 +1,117 @@
+Windows Setup instructions
+
+PYTHON
+
+Download Python here
+https://www.python.org/downloads/windows/
+run MSI installer
+and choose to include Python.exe in the PATH
+
+
+MONGO DB
+Install tutorial
+https://docs.mongodb.org/manual/tutorial/install-mongodb-on-windows/
+
+Download Mongo DB here
+https://www.mongodb.org/downloads?_ga=1.114949455.91923056.1453301539#production
+
+open command prompt
+cd into bin and start server
+>>>mongod
+
+
+then open another command prompt and start mongo DB shell
+to issue commands
+>>mongo
+
+tell mongo which database to use
+>> use db sports
+
+create a new collection
+>> db.createCollection("FootballTeams")
+
+list existing collections
+> show collections
+footballTeams
+
+insert documents into collections
+> db.footballTeams.insert({"name":"Steelers","city":"Pittsburgh"})
+WriteResult({ "nInserted" : 1 })
+> db.footballTeams.insert({"name":"Jets","city":"New York"})
+WriteResult({ "nInserted" : 1 })
+> db.footballTeams.insert({"name":"Patriots","city":"New England"})
+WriteResult({ "nInserted" : 1 })
+> db.footballTeams.insert({"name":"Broncos","city":"Denver"})
+WriteResult({ "nInserted" : 1 })
+
+
+query to find a specific document
+> db.footballTeams.find({"name":"Steelers"})
+{ "_id" : ObjectId("56a3b13a671657521fbd4220"), "name" : "Steelers", "city" : "P
+ittsburgh" }
+
+> db.footballTeams.find({"city":"New York"})
+{ "_id" : ObjectId("56a3b1c7671657521fbd4221"), "name" : "Jets", "city" : "New Y
+ork" }
+
+LIKE QUERY example
+
+> db.footballTeams.find({"city":/New/})
+{ "_id" : ObjectId("56a3b1c7671657521fbd4221"), "name" : "Jets", "city" : "New Y
+ork" }
+{ "_id" : ObjectId("56a3b1d6671657521fbd4222"), "name" : "Patriots", "city" : "N
+ew England" }
+
+
+> db.createCollection("footballGames")
+{ "ok" : 1 }
+> db.footballGames.insert({"homeTeam":"Steelers","awayTeam":"Patriots","homeTeam
+Score":35,"awayTeamScore":17})
+WriteResult({ "nInserted" : 1 })
+> db.footballGames.find({"homeTeam":"Steelers"})
+{ "_id" : ObjectId("56a3b313671657521fbd4224"), "homeTeam" : "Steelers", "awayTeam" : "Patriots", "homeTeamScore" : 35, "awayTeamScore" : 17 }
+
+> db.footballGames.insert({"homeTeam":"Jets","awayTeam":"Bills","homeTeamScore":14,"awayTeamScore":21})
+WriteResult({ "nInserted" : 1 })
+
+
+ADDING two fields example
+db.footballGames.aggregate([
+    { 
+       $project : 
+        {  
+          'homeTeamScore' : '$homeScore',  
+          'awayTeamScore' : '$awayScore', 
+          'total' : {'$add' : [ '$homeTeamScore', '$awayTeamScore' ]}
+        }
+      }]);
+      
+      
+NOW install PYMONGO for connecting python to MongoDB
+
+go into install dir or Python and issue the following command
+      >python -m pip install pymongo
+
+tutorial to connect mongo
+http://api.mongodb.org/python/current/installation.html
+      
+      Python and mongo
+      >>>import pymongo
+      >>> from pymongo import MongoClient
+      >>>client = MongoClient()
+      connect to the moviesdb database
+      >>>db = client['moviesdb']
+      
+      connect to the movies collection
+      >>>movieColletion = db.movies
+      find a record in the movies collections by title
+      movieCollection.find_one({“title”:”Star Wars”})
+      
+      
+      
+      
+       execute python code
+      	chmod +x movieInsert.py
+      
+      actaul comand line
+      	python movieInsert.py < movies.dat
