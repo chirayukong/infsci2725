@@ -105,7 +105,7 @@ http://api.mongodb.org/python/current/installation.html
       connect to the movies collection
       >>>movieColletion = db.movies
       find a record in the movies collections by title
-      movieCollection.find_one({ìtitleî:îStar Warsî})
+      movieCollection.find_one({“title”:”Star Wars”})
       
       
       
