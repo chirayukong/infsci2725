@@ -19,6 +19,8 @@ open command prompt
 cd into bin and start server
 >>>mongod
 
+# For OS X users
+>>>mongod --config /usr/local/etc/mongod.conf
 
 then open another command prompt and start mongo DB shell
 to issue commands
