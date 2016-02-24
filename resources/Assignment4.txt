@@ -1,0 +1,19 @@
+INFSCI 2725: Data Analytics
+
+Assignment 4: R Programming
+
+The assignment should be done in R.
+Please submit the R code with your comments.
+
+Titanic Data Graphics
+(1) Go to kaggle.com > Titanic: Machine Learning from Disaster and download (train.csv)
+(2) You will submit a single R file (DOCUMENTED)
+(3) You will create a plot (for each, so 5 plots in total) in ggplot2 using:
+  a. Whisker-plot
+  b. Histogram
+  c. Facet grid
+  d. Violin plot
+  e. Heatmap
+
+(4) Create a write up (500 – 1500 words):
+Write up a 500 – 1500 word document talking about the assignment using the graphics to describe the passengers of Titanic.
