@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<smile version="1.0" id="Network1" numsamples="1000" discsamples="10000">
+	<nodes>
+		<cpt id="Stay_Up_Before_an_Exam">
+			<state id="T" />
+			<state id="F" />
+			<probabilities>0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="Learn_More">
+			<state id="T" />
+			<state id="F" />
+			<parents>Stay_Up_Before_an_Exam</parents>
+			<probabilities>0.8 0.2 0.2 0.8</probabilities>
+		</cpt>
+		<cpt id="Be_Tired">
+			<state id="T" />
+			<state id="F" />
+			<parents>Stay_Up_Before_an_Exam</parents>
+			<probabilities>0.8 0.2 0.2 0.8</probabilities>
+		</cpt>
+		<cpt id="Exam_Performance">
+			<state id="High" />
+			<state id="Low" />
+			<parents>Learn_More Be_Tired</parents>
+			<probabilities>0.5 0.5 0.8 0.2 0.2 0.8 0.5 0.5</probabilities>
+		</cpt>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="GeNIe 2.0.5406.0" name="Network1" faultnameformat="nodestate">
+			<node id="Stay_Up_Before_an_Exam">
+				<name>Stay Up Before an Exam</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" bold="true" />
+				<position>217 70 344 149</position>
+				<barchart active="true" width="208" height="69" />
+			</node>
+			<node id="Learn_More">
+				<name>Learn More</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" bold="true" />
+				<position>105 198 204 259</position>
+				<barchart active="true" />
+			</node>
+			<node id="Be_Tired">
+				<name>Be Tired</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" bold="true" />
+				<position>382 219 461 268</position>
+				<barchart active="true" />
+			</node>
+			<node id="Exam_Performance">
+				<name>Exam Performance</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" bold="true" />
+				<position>216 337 341 415</position>
+				<barchart active="true" width="181" height="69" />
+			</node>
+		</genie>
+	</extensions>
+</smile>

@@ -1,0 +1,706 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<smile version="1.0" id="Network1" numsamples="1000" discsamples="10000">
+	<nodes>
+		<cpt id="OutsideTemperature">
+			<state id="Warm" />
+			<state id="Cold" />
+			<probabilities>0.2 0.8</probabilities>
+		</cpt>
+		<cpt id="Swimming">
+			<state id="True" />
+			<state id="False" />
+			<parents>OutsideTemperature</parents>
+			<probabilities>0.6 0.4 0.01 0.99</probabilities>
+		</cpt>
+		<cpt id="IceCreamConsumption">
+			<state id="Much" />
+			<state id="Little" />
+			<parents>OutsideTemperature</parents>
+			<probabilities>0.9 0.09999999999999998 0.2 0.8</probabilities>
+		</cpt>
+		<cpt id="Drinking">
+			<state id="Yes" />
+			<state id="No" />
+			<probabilities>0.1 0.9</probabilities>
+		</cpt>
+		<cpt id="Addiction">
+			<state id="Yes" />
+			<state id="No" />
+			<probabilities>0.01 0.99</probabilities>
+		</cpt>
+		<cpt id="Unfaithfulness">
+			<state id="Yes" />
+			<state id="No" />
+			<probabilities>0.02 0.98</probabilities>
+		</cpt>
+		<cpt id="Strong_Emotional_Dependence_on_Parents">
+			<state id="Yes" />
+			<state id="No" />
+			<probabilities>0.4 0.6</probabilities>
+		</cpt>
+		<noisymax id="Marital_Problems">
+			<state id="Yes" />
+			<state id="No" />
+			<parents>Drinking Addiction Unfaithfulness Strong_Emotional_Dependence_on_Parents</parents>
+			<strengths>0 1 0 1 0 1 0 1</strengths>
+			<parameters>0.2 0.8 0 1 0.4 0.6 0 1 0.6 0.4 0 1 0.4 0.6 0 1 0.05000000000000004 0.95</parameters>
+		</noisymax>
+		<cpt id="Drowning">
+			<state id="True" />
+			<state id="False" />
+			<parents>Swimming</parents>
+			<probabilities>0.2 0.8 0.01 0.99</probabilities>
+		</cpt>
+		<cpt id="Meningitis">
+			<state id="Men" />
+			<state id="NoMen" />
+			<probabilities>0.01 0.99</probabilities>
+		</cpt>
+		<cpt id="Flu">
+			<state id="Flu" />
+			<state id="NoFlu" />
+			<probabilities>0.1 0.9</probabilities>
+		</cpt>
+		<cpt id="Pneumonia">
+			<state id="Pneumonia" />
+			<state id="NoPneum" />
+			<probabilities>0.01 0.99</probabilities>
+		</cpt>
+		<noisymax id="Fever">
+			<state id="Fever" />
+			<state id="NoFever" />
+			<parents>Pneumonia Meningitis Flu</parents>
+			<strengths>0 1 0 1 0 1</strengths>
+			<parameters>0.8 0.2 0 1 0.7 0.3 0 1 0.5 0.5 0 1 0.01000000000000001 0.99</parameters>
+		</noisymax>
+		<cpt id="Shivering">
+			<state id="Shivering" />
+			<state id="NoShiver" />
+			<parents>Fever</parents>
+			<probabilities>0.3 0.7 0.01 0.99</probabilities>
+		</cpt>
+		<cpt id="Heart_Problems">
+			<state id="Yes" />
+			<state id="No" />
+			<probabilities>0.1 0.9</probabilities>
+		</cpt>
+		<cpt id="Lung_Problems">
+			<state id="Yes" />
+			<state id="No" />
+			<probabilities>0.1 0.9</probabilities>
+		</cpt>
+		<cpt id="ICUnit">
+			<state id="Yes" />
+			<state id="No" />
+			<parents>Heart_Problems Lung_Problems</parents>
+			<probabilities>0.9 0.09999999999999998 0.5 0.5 0.7 0.3 0.01 0.99</probabilities>
+		</cpt>
+		<cpt id="Disease">
+			<state id="Present" />
+			<state id="Absent" />
+			<probabilities>0.1 0.9</probabilities>
+		</cpt>
+		<cpt id="Test">
+			<state id="Present" />
+			<state id="Absent" />
+			<parents>Disease</parents>
+			<probabilities>0.98 0.02000000000000002 0.09999999999999998 0.9</probabilities>
+		</cpt>
+		<cpt id="Liver_Cancer">
+			<state id="Present" />
+			<state id="Absent" />
+			<probabilities>0.1 0.9</probabilities>
+		</cpt>
+		<cpt id="Jaundice">
+			<state id="Present" />
+			<state id="Absent" />
+			<parents>Disease Liver_Cancer</parents>
+			<probabilities>0.99 0.01000000000000001 0.8 0.2 0.7 0.3 0.05 0.95</probabilities>
+		</cpt>
+		<cpt id="Jaundice_2">
+			<state id="Present" />
+			<state id="Absent" />
+			<parents>Jaundice</parents>
+			<probabilities>0.8 0.2 0.05 0.95</probabilities>
+		</cpt>
+		<cpt id="Lethargy">
+			<state id="Present" />
+			<state id="Absent" />
+			<parents>Jaundice</parents>
+			<probabilities>0.3 0.7 0.01 0.99</probabilities>
+		</cpt>
+		<cpt id="Life_Enjoyment">
+			<state id="Yes" />
+			<state id="No" />
+			<probabilities>0.3 0.7</probabilities>
+		</cpt>
+		<cpt id="Node1">
+			<state id="Drinks" />
+			<state id="Abstains" />
+			<parents>Life_Enjoyment</parents>
+			<probabilities>0.6 0.4 0.1 0.9</probabilities>
+		</cpt>
+		<cpt id="Heart_Disease">
+			<state id="Yes" />
+			<state id="No" />
+			<parents>Life_Enjoyment</parents>
+			<probabilities>0.1 0.9 0.2 0.8</probabilities>
+		</cpt>
+		<cpt id="Pressure">
+			<state id="High" />
+			<state id="Low" />
+			<probabilities>0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="Manipulation">
+			<state id="High" />
+			<state id="Low" />
+			<probabilities>0.1 0.9</probabilities>
+		</cpt>
+		<cpt id="Barometer">
+			<state id="High" />
+			<state id="Low" />
+			<parents>Manipulation Pressure</parents>
+			<probabilities>0.99 0.01000000000000001 0.98 0.02000000000000002 0.9 0.09999999999999998 0.1 0.9</probabilities>
+		</cpt>
+		<cpt id="HardCase">
+			<state id="Yes" />
+			<state id="No" />
+			<probabilities>0.2 0.8</probabilities>
+		</cpt>
+		<cpt id="TopSurgeon">
+			<state id="Yes" />
+			<state id="No" />
+			<parents>HardCase</parents>
+			<probabilities>0.9 0.09999999999999998 0.1 0.9</probabilities>
+		</cpt>
+		<cpt id="Death">
+			<state id="Death" />
+			<state id="Success" />
+			<parents>HardCase TopSurgeon</parents>
+			<probabilities>0.2 0.8 0.4 0.6 0.05 0.95 0.1 0.9</probabilities>
+		</cpt>
+		<cpt id="Copy_of_Flu">
+			<state id="Flu" />
+			<state id="NoFlu" />
+			<probabilities>0.02 0.98</probabilities>
+		</cpt>
+		<cpt id="Copy_of_Fever">
+			<state id="Fever" />
+			<state id="NoFever" />
+			<parents>Copy_of_Flu</parents>
+			<probabilities>0.5 0.5 0.01 0.99</probabilities>
+		</cpt>
+		<cpt id="Copy_of_Shivering">
+			<state id="Shivering" />
+			<state id="NoShiver" />
+			<parents>Copy_of_Fever</parents>
+			<probabilities>0.3 0.7 0.001 0.999</probabilities>
+		</cpt>
+		<cpt id="Copy_of_IceCreamConsumption">
+			<state id="Much" />
+			<state id="Little" />
+			<probabilities>0.3400000000000001 0.66</probabilities>
+		</cpt>
+		<cpt id="Copy_of_Drowning">
+			<state id="True" />
+			<state id="False" />
+			<parents>Copy_of_IceCreamConsumption</parents>
+			<probabilities>0.07124705882352939 0.9287529411764706 0.0152969696969697 0.9847030303030303</probabilities>
+		</cpt>
+		<cpt id="Copy_of_Node1">
+			<state id="Drinks" />
+			<state id="Abstains" />
+			<probabilities>0.2500000000000001 0.75</probabilities>
+		</cpt>
+		<cpt id="Copy_of_Heart_Disease">
+			<state id="Yes" />
+			<state id="No" />
+			<parents>Copy_of_Node1</parents>
+			<probabilities>0.128 0.8719999999999999 0.184 0.816</probabilities>
+		</cpt>
+		<cpt id="Copy_of_Heart_Problems">
+			<state id="Yes" />
+			<state id="No" />
+			<probabilities>0.43 0.5700000000000001</probabilities>
+		</cpt>
+		<cpt id="Copy_of_Lung_Problems">
+			<state id="Yes" />
+			<state id="No" />
+			<parents>Copy_of_Heart_Problems</parents>
+			<probabilities>0.17 0.83 0.89 0.11</probabilities>
+		</cpt>
+		<cpt id="Copy_of_TopSurgeon">
+			<state id="Yes" />
+			<state id="No" />
+			<probabilities>0.26 0.7400000000000001</probabilities>
+		</cpt>
+		<cpt id="Copy_of_Death">
+			<state id="Death" />
+			<state id="Success" />
+			<parents>Copy_of_TopSurgeon</parents>
+			<probabilities>0.1538461538461539 0.8461538461538462 0.1081081081081081 0.8918918918918919</probabilities>
+		</cpt>
+		<cpt id="Drinking_2">
+			<state id="Drunk" />
+			<state id="Sober" />
+			<probabilities>0.1 0.9</probabilities>
+		</cpt>
+		<cpt id="Driving">
+			<state id="Driver" />
+			<state id="Passenger" />
+			<probabilities>0.8 0.2</probabilities>
+		</cpt>
+		<cpt id="Accident">
+			<state id="Accident" />
+			<state id="NoAccident" />
+			<parents>Drinking_2 Driving</parents>
+			<probabilities>0.1 0.9 0.05 0.95 0.01 0.99 0.01 0.99</probabilities>
+		</cpt>
+		<cpt id="Death_2">
+			<state id="Dead" />
+			<state id="Alive" />
+			<parents>Accident</parents>
+			<probabilities>0.1 0.9 0.001 0.999</probabilities>
+		</cpt>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="GeNIe 2.0.5406.0" name="Network1" faultnameformat="nodestate">
+			<textbox>
+				<caption>Directed Probabilistic Graphs and Causality</caption>
+				<font color="ae001b" name="Arial" size="24" bold="true" />
+				<position>31 28 854 74</position>
+			</textbox>
+			<textbox>
+				<caption>Causality and probability are directly related.\nCausal relationships imply statistical relationships.</caption>
+				<font color="000080" name="Arial" size="16" bold="true" />
+				<position>89 97 763 161</position>
+			</textbox>
+			<node id="OutsideTemperature">
+				<name>Outside Temperature</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="14" bold="true" />
+				<position>1555 1013 1613 1053</position>
+				<barchart active="true" width="275" height="100" />
+			</node>
+			<node id="Swimming">
+				<name>Swimming Outdoors</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="14" bold="true" />
+				<position>1739 1182 1784 1210</position>
+				<barchart active="true" width="254" height="100" />
+			</node>
+			<node id="IceCreamConsumption">
+				<name>Ice Cream Consumption</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="14" bold="true" />
+				<position>1359 1170 1422 1217</position>
+				<barchart active="true" width="332" height="101" />
+			</node>
+			<node id="Marital_Problems">
+				<name>Marital Problems</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="14" bold="true" />
+				<position>360 3341 458 3402</position>
+				<barchart active="true" width="219" height="83" />
+			</node>
+			<node id="Drinking">
+				<name>Drinking</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="14" bold="true" />
+				<position>151 3236 225 3282</position>
+				<barchart active="true" width="128" height="78" />
+			</node>
+			<node id="Unfaithfulness">
+				<name>Unfaithfulness</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="14" bold="true" />
+				<position>504 3068 612 3135</position>
+				<barchart active="true" width="270" height="93" />
+			</node>
+			<node id="Addiction">
+				<name>Addiction</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="14" bold="true" />
+				<position>223 3108 304 3158</position>
+				<barchart active="true" width="167" height="93" />
+			</node>
+			<node id="Strong_Emotional_Dependence_on_Parents">
+				<name>Strong Emotional Dependence on Parents</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="14" bold="true" />
+				<position>642 3200 790 3297</position>
+				<barchart active="true" width="439" height="106" />
+			</node>
+			<textbox>
+				<caption>For example, directed causal links/chains result in probabilistic dependencies between variables on the chain.</caption>
+				<font color="000080" name="Arial" size="16" bold="true" />
+				<position>95 194 786 290</position>
+			</textbox>
+			<textbox>
+				<caption>But, common effects, when observed, result in probabilistic dependencies between their causes!</caption>
+				<font color="000080" name="Arial" size="16" bold="true" />
+				<position>195 2490 556 2618</position>
+			</textbox>
+			<node id="Drowning">
+				<name>Drowning</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="14" bold="true" />
+				<position>1741 1300 1786 1328</position>
+				<barchart active="true" width="164" height="100" />
+			</node>
+			<node id="Meningitis">
+				<name>Meningitis</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="14" bold="true" />
+				<position>409 4805 473 4845</position>
+				<barchart active="true" width="198" height="78" />
+			</node>
+			<node id="Flu">
+				<name>Flu</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="14" bold="true" />
+				<position>570 4931 607 4954</position>
+				<barchart active="true" width="192" height="78" />
+			</node>
+			<node id="Pneumonia">
+				<name>Pneumonia</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="14" bold="true" />
+				<position>222 4904 288 4945</position>
+				<barchart active="true" width="221" height="78" />
+			</node>
+			<node id="Fever">
+				<name>Fever</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="14" bold="true" />
+				<position>416 5098 462 5126</position>
+				<barchart active="true" width="184" height="78" />
+			</node>
+			<node id="Shivering">
+				<name>Shivering</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="14" bold="true" />
+				<position>270 5208 329 5244</position>
+				<barchart active="true" width="199" height="78" />
+			</node>
+			<node id="Heart_Problems">
+				<name>Heart Problems</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="14" bold="true" />
+				<position>1389 3679 1512 3755</position>
+				<barchart active="true" width="247" height="93" />
+			</node>
+			<node id="Lung_Problems">
+				<name>Lung Problems</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="14" bold="true" />
+				<position>1661 3678 1784 3754</position>
+				<barchart active="true" width="215" height="78" />
+			</node>
+			<node id="ICUnit">
+				<name>Being in a Hospital IC Unit</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="14" bold="true" />
+				<position>1523 3844 1664 3932</position>
+				<barchart active="true" width="337" height="93" />
+			</node>
+			<node id="Disease">
+				<name>Hepatitis B</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="14" bold="true" />
+				<position>239 4163 303 4203</position>
+				<barchart active="true" width="163" height="78" />
+			</node>
+			<node id="Test">
+				<name>Antibody test</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="14" bold="true" />
+				<position>140 4441 216 4488</position>
+				<barchart active="true" width="230" height="93" />
+			</node>
+			<node id="Jaundice">
+				<name>Increased Billirubin Level</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="14" bold="true" />
+				<position>463 4309 520 4344</position>
+				<barchart active="true" width="352" height="100" />
+			</node>
+			<node id="Liver_Cancer">
+				<name>Liver Cancer</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="14" bold="true" />
+				<position>449 4159 524 4205</position>
+				<barchart active="true" width="168" height="78" />
+			</node>
+			<node id="Jaundice_2">
+				<name>Jaundice</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="14" bold="true" />
+				<position>407 4438 464 4473</position>
+				<barchart active="true" width="158" height="78" />
+			</node>
+			<node id="Lethargy">
+				<name>Lethargy</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="14" bold="true" />
+				<position>624 4439 681 4474</position>
+				<barchart active="true" width="161" height="78" />
+			</node>
+			<node id="Node1">
+				<name>Wine Consumption</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="14" bold="true" />
+				<position>1413 1761 1512 1822</position>
+				<barchart active="true" width="273" height="93" />
+			</node>
+			<node id="Heart_Disease">
+				<name>Heart Disease</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="14" bold="true" />
+				<position>1741 1765 1821 1815</position>
+				<barchart active="true" width="229" height="93" />
+			</node>
+			<node id="Life_Enjoyment">
+				<name>Life Enjoyment</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="14" bold="true" />
+				<position>1588 1650 1649 1688</position>
+				<barchart active="true" width="195" height="78" />
+			</node>
+			<node id="Pressure">
+				<name>Barometric  Pressure</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" bold="true" />
+				<position>126 2639 265 2725</position>
+				<barchart active="true" width="234" height="84" />
+			</node>
+			<node id="Barometer">
+				<name>Barometer Reading</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" bold="true" />
+				<position>322 2808 434 2878</position>
+				<barchart active="true" width="275" height="84" />
+			</node>
+			<node id="Manipulation">
+				<name>Manual Manipulation of the Barometer</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" bold="true" />
+				<position>509 2644 645 2729</position>
+				<barchart active="true" width="450" height="84" />
+			</node>
+			<textbox>
+				<caption>Common causes result in probabilistic dependencies between their effects.</caption>
+				<font color="000080" name="Arial" size="16" bold="true" />
+				<position>1471 877 1827 973</position>
+			</textbox>
+			<node id="Copy_of_Flu">
+				<name>Flu</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="14" bold="true" />
+				<position>417 298 454 321</position>
+				<barchart active="true" width="250" height="93" />
+			</node>
+			<node id="Copy_of_Fever">
+				<name>Fever</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="14" bold="true" />
+				<position>404 450 450 478</position>
+				<barchart active="true" width="242" height="93" />
+			</node>
+			<node id="Copy_of_Shivering">
+				<name>Shivering</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="14" bold="true" />
+				<position>398 596 457 632</position>
+				<barchart active="true" width="257" height="93" />
+			</node>
+			<node id="Death">
+				<name>Death</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="14" bold="true" />
+				<position>1673 2188 1772 2249</position>
+				<barchart active="true" width="200" height="78" />
+			</node>
+			<node id="TopSurgeon">
+				<name>Top Surgeon</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="14" bold="true" />
+				<position>1379 2196 1459 2246</position>
+				<barchart active="true" width="216" height="93" />
+			</node>
+			<node id="HardCase">
+				<name>Difficult Case</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="14" bold="true" />
+				<position>1551 2080 1612 2118</position>
+				<barchart active="true" width="195" height="93" />
+			</node>
+			<node id="Copy_of_IceCreamConsumption">
+				<name>Ice Cream Consumption</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="14" bold="true" />
+				<position>235 1193 298 1240</position>
+				<barchart active="true" width="310" height="101" />
+			</node>
+			<node id="Copy_of_Drowning">
+				<name>Drowning</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="14" bold="true" />
+				<position>557 1206 602 1234</position>
+				<barchart active="true" width="167" height="100" />
+			</node>
+			<node id="Copy_of_Node1">
+				<name>Wine Consumption</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="14" bold="true" />
+				<position>254 1681 353 1742</position>
+				<barchart active="true" width="242" height="93" />
+			</node>
+			<node id="Copy_of_Heart_Disease">
+				<name>Heart Disease</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="14" bold="true" />
+				<position>632 1689 712 1739</position>
+				<barchart active="true" width="247" height="93" />
+			</node>
+			<node id="Copy_of_Death">
+				<name>Death</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="14" bold="true" />
+				<position>509 2184 608 2245</position>
+				<barchart active="true" width="200" height="78" />
+			</node>
+			<node id="Copy_of_TopSurgeon">
+				<name>Top Surgeon</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="14" bold="true" />
+				<position>227 2192 307 2242</position>
+				<barchart active="true" width="204" height="93" />
+			</node>
+			<textbox>
+				<caption>Why this correlation?</caption>
+				<font color="000080" name="Arial" size="16" bold="true" />
+				<position>329 1565 489 1629</position>
+			</textbox>
+			<textbox>
+				<caption>A possible explanation involving a common cause</caption>
+				<font color="000080" name="Arial" size="16" bold="true" />
+				<position>1493 1499 1764 1627</position>
+			</textbox>
+			<textbox>
+				<caption>Quite likely explanation</caption>
+				<font color="000080" name="Arial" size="16" bold="true" />
+				<position>1476 1985 1629 2049</position>
+			</textbox>
+			<textbox>
+				<caption>Why this correlation?</caption>
+				<font color="000080" name="Arial" size="16" bold="true" />
+				<position>300 1101 582 1133</position>
+			</textbox>
+			<textbox>
+				<caption>Why this correlation?</caption>
+				<font color="000080" name="Arial" size="16" bold="true" />
+				<position>327 2080 487 2144</position>
+			</textbox>
+			<node id="Copy_of_Heart_Problems">
+				<name>Heart Problems</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="14" bold="true" />
+				<position>136 3684 259 3760</position>
+				<barchart active="true" width="232" height="93" />
+			</node>
+			<node id="Copy_of_Lung_Problems">
+				<name>Lung Problems</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="14" bold="true" />
+				<position>402 3689 525 3765</position>
+				<barchart active="true" width="215" height="78" />
+			</node>
+			<textbox>
+				<caption>Why this correlation among patients in intensive care units?</caption>
+				<font color="000080" name="Arial" size="16" bold="true" />
+				<position>208 3553 482 3649</position>
+			</textbox>
+			<textbox>
+				<caption>A possible explanation</caption>
+				<font color="000080" name="Arial" size="16" bold="true" />
+				<position>1507 3558 1660 3622</position>
+			</textbox>
+			<node id="Drinking_2">
+				<name>Drinking</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" bold="true" />
+				<position>666 4798 720 4831</position>
+				<barchart active="true" width="182" height="84" />
+			</node>
+			<node id="Driving">
+				<name>Driving</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" bold="true" />
+				<position>911 4812 960 4842</position>
+				<barchart active="true" width="182" height="84" />
+			</node>
+			<node id="Accident">
+				<name>Accident</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" bold="true" />
+				<position>846 4960 903 4995</position>
+				<barchart active="true" width="182" height="84" />
+			</node>
+			<node id="Death_2">
+				<name>Death</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" bold="true" />
+				<position>844 5128 890 5156</position>
+				<barchart active="true" width="182" height="84" />
+			</node>
+		</genie>
+	</extensions>
+</smile>
